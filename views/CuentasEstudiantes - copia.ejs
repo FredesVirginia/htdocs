@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cuentas de Estudiantes</title>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Contraseña</th>
+        <th>Editar</th>
+        <th>Borrar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% estudiantes.forEach(function(estudiante) { %>
+        <tr>
+          <td><%= estudiante.nombre %></td>
+          <td><%= estudiante.email %></td>
+          <td><%= estudiante.password %></td>
+          <td><a href="/api/Docentes/CuentasEstudiantes/editar/<%= estudiante.id %>">Editar</a></td>
+          <td><a href="/api/Docentes/CuentasEstudiantes/borrar/<%= estudiante.id %>">Borrar</a></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>

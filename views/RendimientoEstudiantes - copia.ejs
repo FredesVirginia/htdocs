@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rendimiento de los estudiantes</title>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Estudiante</th>
+        <th>Examen</th>
+        <th>Calificación</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% if (resultados && resultados.length > 0) { %> <!-- Comprueba si "resultados" existe y tiene elementos -->
+      <% resultados.forEach(function(rendimiento) { %>
+        <tr>
+          <td><%= rendimiento.estudiante %></td>
+          <td><%= rendimiento.examen %></td>
+          <td><%= rendimiento.calificacion %></td>
+        </tr>
+      <% }); %>
+    <% } else { %>
+      <tr>
+        <td colspan="3">No hay rendimientos disponibles</td> <!-- Muestra un mensaje si "resultados" está vacío -->
+      </tr>
+    <% } %>
+    </tbody>
+  </table>
+</body>
+</html>

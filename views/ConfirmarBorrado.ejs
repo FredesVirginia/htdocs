@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmar Borrado</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #1B6AC2;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            margin: 0;
+        }
+
+        /* Estilos para la tabla */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Estilos para los botones */
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .btn-danger {
+            background-color: #f44336;
+        }
+
+        .btn-success {
+            background-color: #4CAF50;
+        }
+
+        /* Estilos adicionales para los botones en línea */
+        .btn-inline {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* Estilos para el botón de regresar */
+        .btn-regresar {
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+            width: 250px;
+        }
+
+        /* Estilos para el ícono de flecha atrás */
+        .icon-atras {
+            content: "\2190";
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Confirmar Borrado</h1>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Acciones</th>
+        </tr>
+        <tr>
+            <td><%= estudiante.nombre %></td>
+            <td><%= estudiante.email %></td>
+            <td>
+                <div class="btn-container">
+                    <form method="POST" action="/api/Docentes/CuentasEstudiantes/borrar/<%= estudiante.id %>">
+                        <button type="submit" class="btn btn-danger btn-inline">Borrar</button>
+                    </form>
+                    <a href="/api/Docentes/CuentasEstudiantes" class="btn btn-success btn-inline">Cancelar</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Botón para regresar a la página anterior -->
+    <a href="javascript:history.back()" class="btn-regresar"><span class="icon-atras"></span>Regresar</a>
+</body>
+</html>

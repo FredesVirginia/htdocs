@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temas</title>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre del tema</th>
+        <th>Descripción</th>
+        <th>Editar</th>
+        <th>Borrar</th>
+
+      </header>
+      <nav>
+          <a href="inicio.html">Inicio</a>
+          <a href="Unidad I.html">Unidad I</a>
+          <a href="Unidad II.html">Unidad II</a>
+          <a href="Unidad III.html">Unidad III</a>
+          <a href="Unidad IV.html">Unidad IV</a>
+      </nav>
+
+      </tr>
+    </thead>
+    <tbody>
+  <% if (typeof temas !== 'undefined' && temas.length > 0) { %> <!-- Comprueba si "temas" existe y si tiene elementos -->
+    <% temas.forEach(function(tema) { %>
+      <tr>
+
+        <td ><a href="https://www.ilovepdf.com/es/descarga/581qsx0shj9tmzlhp2mn3hvjhh093tb5wcxb8y90hy22pqqjyA92A7wxA3vws18vAkqr1mnn7tvAwnh3cgg3xq6gsngxb7zwg96ry447ysr6n137k2nxxkntms5Azj60gkw98gmdjjlv0dfm4ldnktz6Ayp81s0pvsvr17zdm5lpq16vsjnq/5"
+        <td><%= tema.nombre %></td>
+
+        <td><%= tema.descripcion %></td>
+      </tr>
+    <% }); %>
+  <% } else { %>
+    <tr>
+      <td colspan="2">No hay temas disponibles</td> <!-- Muestra un mensaje si "temas" está vacío -->   
+    </tr>
+ 
+  <% } %>
+</tbody>
+  </table>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exámenes</title>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre del examen</th>
+        <th>Tema</th>
+        <th>Editar</th>
+        <th>Borrar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% examenes.forEach(function(examen) { %>
+        <tr>
+          <td><%= examen.nombre %></td>
+          <td><%= examen.tema %></td>
+          <td><a href="/api/Docentes/Examenes/editar/<%= examen.id %>">Editar</a></td>
+          <td><a href="/api/Docentes/Examenes/borrar/<%= examen.id %>">Borrar</a></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>

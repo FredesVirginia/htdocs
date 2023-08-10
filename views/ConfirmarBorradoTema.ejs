@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmar Borrado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #555;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 50px;
+            
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        
+
+        .btnGuardar {
+            background-color: #45a049;
+        }
+
+        .btnCanselar{
+            background-color: #f44336;
+        }
+
+        .divButton{
+           display: flex;
+           justify-content: space-between;
+           margin-left: 10px;
+        }
+
+        input {
+            
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 16px;
+        }
+        textarea {
+            
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 16px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Confirmar Borrado de tema</h1>
+    
+    <form action="/api/Docentes/Temas/editar/<%= tema.id %>" method="POST">
+        <label for="nombre">Nombre del Tema:</label>
+        <input type="text" id="nombre" name="nombre" value="<%= tema.nombre %>" required>
+        <br>
+        <label for="link">Link del Tema:</label>
+        
+        <textarea id="link" name="link" rows="4" required><%= tema.link %></textarea>
+        <br>
+        <label for="descripcion">Descripcion:</label>
+        <textarea id="descripcion" name="descripcion" rows="4" required><%= tema.descripcion %></textarea>
+        <br>
+        <div class="divButton" >
+            <button  class="btnGuardar" type="submit">Guardar Cambios</button>
+            <button class="btnCanselar" type="submit">Canselar</button>
+        </div>
+    </form>
+
+
+
+
+    <!-- Bot�n para regresar a la p�gina anterior -->
+    <a href="javascript:history.back()" class="btn-regresar"><span class="icon-atras"></span>Regresar</a>
+</body>
+</html>

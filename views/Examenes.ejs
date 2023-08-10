@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exámenes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        td a {
+            text-decoration: none;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        nav {
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        @media (max-width: 768px) {
+            th, td {
+                padding: 5px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                padding: 10px;
+            }
+        }
+
+        /* Estilos para el enlace con efecto de aumento al pasar el mouse por encima */
+        .link-with-hover {
+           
+            font-size: 16px; /* Tamaño inicial del texto */
+            transition: font-size 0.2s; /* Transición de 0.2 segundos para suavizar el cambio de tamaño */
+        }
+
+
+
+        .link-with-hover:hover {
+            font-size: 20px; /* Tamaño del texto cuando el mouse está encima */
+        }
+
+        .link-with-hover-nombre {
+            text-decoration:underline;
+            width: 60px;
+           
+            font-size: 16px; /* Tamaño inicial del texto */
+            transition: font-size 0.2s; /* Transición de 0.2 segundos para suavizar el cambio de tamaño */
+        }
+
+        
+
+        .link-with-hover-nombre:hover {
+            font-size: 20px; /* Tamaño del texto cuando el mouse está encima */
+            color: white;
+            background-color: blue;
+            font-weight: bold;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+            margin-top: 40px;
+            margin-left: 82vw;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .btn-danger {
+            background-color: #f44336;
+        }
+
+        .btn-success {
+            background-color:  #007bff;
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .btn-success:hover {
+            background-color: white;
+            color:  #4CAF50;
+            border: 3px solid   #4CAF50;
+             
+        }
+
+        /* Estilos adicionales para los botones en l�nea */
+        .btn-inline {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" data-page="/api/login">Inicio</a>
+        <a href="/api/Docentes/Unidad/">Unidad I</a>
+        <a href="Unidad II.html">Unidad II</a>
+        <a href="Unidad III.html">Unidad III</a>
+        <a href="Unidad IV.html">Unidad IV</a>
+    </nav>
+    <h1 style="margin-left: 680px;"> Examenes - <%= unidad_nombre %></h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre del examen</th>
+                <th>Tema</th>
+                <th>Editar</th>
+                <th>Borrar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% examenes.forEach(function(examen) { %>
+                <tr>
+                    <td><a    class="link-with-hover-nombre" href="<%= examen.link %>">
+                        <%= examen.nombre %>
+                    </a></td>
+                    <td><%= examen.tema %></td>
+                    <td><a href="/api/Docentes/Examenes/editar/<%= examen.id %>">Editar</a></td>
+                    <td><a href="/api/Docentes/Examenes/borrar/<%= examen.id %>">Borrar</a></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <a href="/api/Docentes/Examenes/crear/<%= unidad_nombre %>" style="margin-top: 20px; display: block;">Agregar nuevo Examen</a>
+</body>
+</html>

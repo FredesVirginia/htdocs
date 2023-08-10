@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Docente</title>
+    <link rel="stylesheet" type="text/css" href="/Docentes.css">
+</head>
+<body>
+    <div class="main-container">
+        <header class="main-header">
+            <div class="user-info">
+                <p><%= docente.nombre %></p>
+                <p><%= docente.role %></p>
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="/api/Docentes/CuentasEstudiantes" class="nav-link">Cuentas de Estudiantes</a></li>
+                    <li><a href="/api/Docentes/Temas" class="nav-link">Temas</a></li>
+                    <li><a href="/api/Docentes/Examenes" class="nav-link">Exámenes</a></li>
+                    <li><a href="/api/Docentes/RendimientoEstudiantes" class="nav-link">Rendimiento</a></li>
+                    <li><a href="/api/logout">Salir</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    <div id="main-content">
+        <!-- El contenido de inicia en Blanco, luego al dar clic en Cuentas de Estudiantes, Temas, Exámenes, Rendimiento mostraría el contenido de /api/Docentes/CuentasEstudiantes,/api/Docentes/Temas, /api/Docentes/Examenes, /api/Docentes/RendimientoEstudiantes en la etiqueta div id="main-content"  -->
+        
+    
+            <h1>Bienvenido </h1>
+        
+    </div>
+  <script>
+  // Para cada elemento con la clase 'nav-link'
+  document.querySelectorAll('.nav-link').forEach((link) => {
+    // Agrega un oyente de eventos que se activa cuando el usuario hace clic en el enlace
+    link.addEventListener('click', (e) => {
+      // Prevén la acción predeterminada del enlace (navegar a la URL)
+      e.preventDefault();
+
+      // Envía una solicitud HTTP GET a la URL del enlace
+      fetch(e.target.href)
+        // Una vez que se recibe la respuesta, convierte la respuesta en texto
+        .then(response => response.text())
+
+        // Una vez que se convierte la respuesta en texto, actualiza el contenido interno
+        // del elemento con id 'main-content' con el texto de la respuesta
+        .then(data => {
+          document.getElementById('main-content').innerHTML = data;
+        });
+    });
+  });
+</script>
+
+</body>
+</html>

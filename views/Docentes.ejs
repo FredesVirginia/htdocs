@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Docente</title>
+    <style>
+        /* Estilos para el menú y la información del docente */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .main-container {
+            background-color: #f1f1f1;
+            padding: 10px;
+        }
+
+        .user-info {
+            background-color: #1B6AC2;
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .user-info img {
+            width: 100px; /* Ajusta el tamaño del logo según tus necesidades */
+            height: auto;
+            margin-right: 20px;
+        }
+
+        .navigation {
+            background-color: #333;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navigation ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .navigation li {
+            margin-right: 10px;
+        }
+
+        .navigation li a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .navigation li a:hover {
+            background-color: #444;
+        }
+
+        .navigation li a.active {
+            background-color: #555;
+        }
+
+        /* Estilos para el menú hamburguesa en móviles */
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .navigation ul {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background-color: #333;
+                padding: 20px 0;
+            }
+
+            .navigation ul.open {
+                display: flex;
+            }
+
+            .navigation li {
+                margin: 10px 0;
+            }
+        }
+
+        /* Contenido principal */
+        #main-content {
+            padding: 20px;
+        }
+
+        #main-content h1 {
+          
+          font-size: 60px;
+          text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <header class="main-header">
+            <div class="user-info">
+                <img src="/logotipo-upnfm.png" alt="Logo"> <!-- Ruta correcta hacia tu logo -->
+                <p><%= docente.nombre %> - <%= docente.role %></p>
+            </div>
+            <nav class="navigation">
+                <div class="menu-icon" onclick="toggleMenu()">&#9776;</div> <!-- Icono de hamburguesa -->
+                <ul>
+                    <li><a href="#" class="nav-link" data-page="/api/Docentes/CuentasEstudiantes">Cuentas de Estudiantes</a></li>
+                    <li><a href="#" class="nav-link" data-page="/api/Docentes/Unidades" >Temas</a></li>
+                    <li><a href="#" class="nav-link" data-page="/api/Docentes/Examenes">Exámenes</a></li>
+                    <li><a href="#" class="nav-link" data-page="/api/Docentes/RendimientoEstudiantes">Rendimiento</a></li>
+                    <li><a href="/api/logout">Salir</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    <div id="main-content">
+        <!-- El contenido inicia en blanco, luego al dar clic en los enlaces se actualizará aquí -->
+        <h1>Bienvenido  </h1>
+    </div>
+
+    <script>
+        // Función para alternar la clase 'open' en el menú hamburguesa
+        function toggleMenu() {
+            const menu = document.querySelector('.navigation ul');
+            menu.classList.toggle('open');
+        }
+
+        // Para cada elemento con la clase 'nav-link'
+        document.querySelectorAll('.nav-link').forEach((link) => {
+            // Agrega un oyente de eventos que se activa cuando el usuario hace clic en el enlace
+            link.addEventListener('click', (e) => {
+                // Prevén la acción predeterminada del enlace (navegar a la URL)
+                e.preventDefault();
+
+                // Elimina la clase 'active' de todos los enlaces
+                document.querySelectorAll('.nav-link').forEach((link) => {
+                    link.classList.remove('active');
+                });
+
+                // Añade la clase 'active' al enlace seleccionado
+                link.classList.add('active');
+
+                // Obtiene la URL de la página a cargar desde el atributo 'data-page' del enlace
+                const pageURL = link.getAttribute('data-page');
+
+                // Envía una solicitud HTTP GET a la URL de la página
+                fetch(pageURL)
+                    // Una vez que se recibe la respuesta, convierte la respuesta en texto
+                    .then(response => response.text())
+
+                    // Una vez que se convierte la respuesta en texto, actualiza el contenido del div 'main-content' con el texto de la respuesta
+                    .then(data => {
+                        document.getElementById('main-content').innerHTML = data;
+                    });
+
+                // Cierra el menú después de hacer clic en el enlace (solo en dispositivos móviles)
+                const menu = document.querySelector('.navigation ul');
+                menu.classList.remove('open');
+            });
+        });
+    </script>
+</body>
+</html>

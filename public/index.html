@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro y Login</title>
+
+  <!-- Asegúrate de vincular tu archivo CSS aquí, si tienes uno -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</head>
+<body>
+  <div class="login-page">
+    <div class="form">
+
+    <img src="logotipo-upnfm.png" width="150px" height="auto" style="text-align:center; padding:0 0 15px 0" alt="">
+
+      <form class="register-form" action="/api/register" method="post">
+        <input type="text" name="username" placeholder="nombre"/>
+        <input type="password" name="password" placeholder="contraseña"/>
+        <input type="text" name="email" placeholder="correo electrónico"/>
+        <select name="role" id="role">
+          <option value="">Seleccionar rol</option>
+          <option value="estudiante">Estudiante</option>
+          <option value="docente">Docente</option>
+        </select>
+        <button type="submit">crear</button>
+        <p class="message">¿Ya estás registrado? <a href="#">Iniciar sesión</a></p>
+      </form>
+      <form class="login-form" action="/api/login" method="post">
+        <input type="text" name="username" placeholder="nombre de usuario"/>
+        <input type="password" name="password" placeholder="contraseña"/>
+        <button type="submit">iniciar sesión</button>
+        <p class="message">¿No estás registrado? <a href="#">Crear una cuenta</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Asegúrate de vincular tu archivo JS aquí, si tienes uno -->
+  <script src="script.js"></script>
+
+</body>
+</html>

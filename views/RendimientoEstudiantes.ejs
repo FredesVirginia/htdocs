@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rendimiento de los estudiantes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        @media (max-width: 768px) {
+            th, td {
+                padding: 5px;
+            }
+        }
+
+        /* Estilos para el mensaje de "No hay rendimientos disponibles" */
+        .no-results {
+            text-align: center;
+            padding: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Estudiante</th>
+                <th>Examen</th>
+                <th>Calificación</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (resultados && resultados.length > 0) { %>
+                <!-- Comprueba si "resultados" existe y tiene elementos -->
+                <% resultados.forEach(function(rendimiento) { %>
+                    <tr>
+                        <td><%= rendimiento.estudiante %></td>
+                        <td><%= rendimiento.examen %></td>
+                        <td><%= rendimiento.calificacion %></td>
+                    </tr>
+                <% }); %>
+            <% } else { %>
+                <tr>
+                    <td class="no-results" colspan="3">No hay rendimientos disponibles</td>
+                    <!-- Muestra un mensaje si "resultados" está vacío -->
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</body>
+</html>

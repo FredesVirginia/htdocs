@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cuentas de Estudiantes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        td a {
+            text-decoration: none;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        nav {
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        @media (max-width: 768px) {
+            th, td {
+                padding: 5px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                padding: 10px;
+            }
+        }
+
+        /* Estilos para el enlace con efecto de aumento al pasar el mouse por encima */
+        .link-with-hover {
+            text-decoration: none;
+            font-size: 16px; /* Tamaño inicial del texto */
+            transition: font-size 0.2s; /* Transición de 0.2 segundos para suavizar el cambio de tamaño */
+        }
+
+        .link-with-hover:hover {
+            font-size: 20px; /* Tamaño del texto cuando el mouse está encima */
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Contraseña</th>
+                <th>Editar</th>
+                <th>Borrar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% estudiantes.forEach(function(estudiante) { %>
+                <tr>
+                    <td><%= estudiante.nombre %></td>
+                    <td><%= estudiante.email %></td>
+                    <td><%= estudiante.password %></td>
+                    <td><a href="/api/Docentes/CuentasEstudiantes/editar/<%= estudiante.id %>"  class="link-with-hover"> ✏️</a></td>
+                    <td><a href="/api/Docentes/CuentasEstudiantes/borrar/<%= estudiante.id %>"  class="link-with-hover"> 🗑</a></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>
